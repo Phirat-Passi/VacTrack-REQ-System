@@ -1,0 +1,21 @@
+api:
+    insecure: true
+    dashboard: true
+    debug: true
+  
+entryPoints:
+    http:
+        address: ":9001"
+    web:
+        address: ":9002"
+ 
+log:
+    level: ERROR
+    filePath: ./traefik.log
+    format: common
+        
+providers:
+    # Enable the file provider to define routers / middlewares / services in file
+    file:
+        filename: ./config-prod-cloud-api.toml
+  
