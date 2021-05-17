@@ -3,6 +3,8 @@
 The VacTrack REQ platform is the interface through which state, local, and territorial health departments and distribution teams can request vaccine shipments and VacPack teams. 
 The REQ platform also integrates the related manufacturing, supply chain, allocation, state and territory planning, delivery and administration of both vaccine products and ancillary kits. 
 
+![image](https://user-images.githubusercontent.com/67471222/118498001-32ecbe80-b743-11eb-9f27-7fdd9c0f6eaf.png)
+
 # VacTrack ExIS External Demographic Information System
 The VacTrack ExIS is a smart, technological AI interface which is exclusively designed and developed for Haiti in order to enhance the process of vaccine distribution through which state, local, and territorial health departments can process vaccine requests by uploading data from their IIS (Immunization Information System) to VacTrack system AI.
 IIS, also known as “vaccine registries,” are confidential, population-based, computerized databases for recording information on vaccine doses. IISs will be maintained by a jurisdiction’s immunization program. In many jurisdictions, routine vaccination providers enroll in public vaccine programs, order vaccines, report inventory, document vaccine spoilage/wastage, and remind patients when vaccine doses are due using the IIS. IIS allows monitoring of immunization history and compliance based on immunization schedule. The IIS is specifically designed to be the source of truth for vaccines supply, ordering, tracking, and monitoring in all the independent states of Haiti.
