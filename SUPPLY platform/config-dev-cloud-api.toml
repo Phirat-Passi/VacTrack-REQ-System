@@ -1,0 +1,112 @@
+# http routing section
+[http]
+  [http.routers]
+     # Define a connection between requests and services
+    [http.routers.to-whoami]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/`)"
+      # If the rule matches, applies the middleware
+      middlewares = ["test-stripprefix"]
+      # If the rule matches, forward to the whoami service (declared below)
+      service = "whoami"
+    [http.routers.user-management]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/usermanagement/`)"
+      #If the rule matches, applies the middleware
+      middlewares = ["user-stripprefix"]
+      #If the rule matches, forward to the user management service (declared below)
+      service = "user-management"
+    [http.routers.shipment-management]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/shipmentmanagement/`)"
+      #If the rule matches, applies the middleware
+      middlewares = ["shipment-stripprefix"]
+      #If the rule matches, forward to the user management service (declared below)
+      service = "shipment-management"
+    [http.routers.transaction-management]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/transactionmanagement/`)"
+      #If the rule matches, applies the middleware
+      middlewares = ["transaction-stripprefix"]
+      #If the rule matches, forward to the user management service (declared below)
+      service = "transaction-management"
+    [http.routers.alert-management]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/alertmanagement/`)"
+      #If the rule matches, applies the middleware
+      middlewares = ["alert-stripprefix"]
+      #If the rule matches, forward to the user management service (declared below)
+      service = "alert-management"
+    [http.routers.track-trace-management]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/tracktracemanagement/`)"
+      #If the rule matches, applies the middleware
+      middlewares = ["track-trace-stripprefix"]
+      #If the rule matches, forward to the user management service (declared below)
+      service = "track-trace-management"
+    [http.routers.notification-management]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/notificationmanagement/`)"
+      #If the rule matches, applies the middleware
+      middlewares = ["notification-stripprefix"]
+      #If the rule matches, forward to the user management service (declared below)
+      service = "notification-management"
+    [http.routers.inventory-management]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/inventorymanagement/`)"
+      #If the rule matches, applies the middleware
+      middlewares = ["inventory-stripprefix"]
+      #If the rule matches, forward to the user management service (declared below)
+      service = "inventory-management"
+    [http.routers.blockchain-management]
+      rule = "Host(`test.vaccineledger.com`) && PathPrefix(`/blockchainmanagement/`)"
+      #If the rule matches, applies the middleware
+      middlewares = ["blockchain-stripprefix"]
+      #If the rule matches, forward to the user management service (declared below)
+      service = "blockchain-management"
+
+  [http.middlewares]
+    [http.middlewares.test-stripprefix.stripPrefix]
+      prefixes = ["/", "/"]
+    # Define an authentication mechanism
+    [http.middlewares.test-user.basicAuth]
+      users = ["test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/"]
+    [http.middlewares.user-stripprefix.stripPrefix]
+      prefixes = ["/usermanagement", "/usermanagement/"]
+    [http.middlewares.shipment-stripprefix.stripPrefix]
+      prefixes = ["/shipmentmanagement", "/shipmentmanagement/"]
+    [http.middlewares.transaction-stripprefix.stripPrefix]
+      prefixes = ["/transactionmanagement", "/transactionmanagement/"]
+    [http.middlewares.alert-stripprefix.stripPrefix]
+      prefixes = ["/alertmanagement", "/alertmanagement/"]
+    [http.middlewares.track-trace-stripprefix.stripPrefix]
+      prefixes = ["/tracktracemanagement", "/tracktracemanagement/"]
+    [http.middlewares.notification-stripprefix.stripPrefix]
+      prefixes = ["/notificationmanagement", "/notificationmanagement/"]
+    [http.middlewares.inventory-stripprefix.stripPrefix]
+      prefixes = ["/inventorymanagement", "/inventorymanagement/"]
+    [http.middlewares.blockchain-stripprefix.stripPrefix]
+      prefixes = ["/blockchainmanagement", "/blockchainmanagement/"]
+    
+  [http.services]
+    # Define how to reach an existing service on our infrastructure
+    [http.services.whoami.loadBalancer]
+      [[http.services.whoami.loadBalancer.servers]]
+        url = "http://127.0.0.1:2999/"
+    #Define how to reach user management service on our infrastructure
+    [http.services.user-management.loadBalancer]
+      [[http.services.user-management.loadBalancer.servers]]
+        url = "http://127.0.0.1:3001/"
+    [http.services.shipment-management.loadBalancer]
+      [[http.services.shipment-management.loadBalancer.servers]]
+        url = "http://127.0.0.1:3002/"
+    [http.services.transaction-management.loadBalancer]
+      [[http.services.transaction-management.loadBalancer.servers]]
+        url = "http://127.0.0.1:3003/"
+    [http.services.alert-management.loadBalancer]
+      [[http.services.alert-management.loadBalancer.servers]]
+        url = "http://127.0.0.1:3004/"
+    [http.services.track-trace-management.loadBalancer]
+      [[http.services.track-trace-management.loadBalancer.servers]]
+        url = "http://127.0.0.1:3005/"
+    [http.services.notification-management.loadBalancer]
+      [[http.services.notification-management.loadBalancer.servers]]
+        url = "http://127.0.0.1:3006/"
+    [http.services.inventory-management.loadBalancer]
+      [[http.services.inventory-management.loadBalancer.servers]]
+        url = "http://127.0.0.1:3007/"
+    [http.services.blockchain-management.loadBalancer]
+      [[http.services.blockchain-management.loadBalancer.servers]]
+        url = "http://52.90.57.31:3008/"
